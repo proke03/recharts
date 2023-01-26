@@ -44,7 +44,7 @@ jobs:
 
       - name: Build Storybook
         run: |
-          npm storybook:build --webpack-stats-json
+          npm run build-storybook
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1
