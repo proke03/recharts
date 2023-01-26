@@ -1,0 +1,56 @@
+# Chromatic action from https://www.chromatic.com/docs/github-actions
+# Using this github action from https://github.com/lightspeedretail/actions-label-prs
+
+name: "chromatic"
+
+on:
+  pull_request:
+    types: [labeled]
+  pull_request_review:
+    types: [submitted]
+  push:
+  workflow_dispatch:
+
+jobs:
+  paths-filter:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.filter.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            packages:
+              - 'storybook/**'
+
+  visual-testing:
+    needs: [paths-filter]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - uses: actions/setup-node@v2
+        with:
+          cache: yarn
+          node-version-file: .nvmrc
+          registry-url: https://npm.pkg.github.com/
+      - run: yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Storybook
+        run: |
+          yarn storybook:build --webpack-stats-json
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: "./storybook/public"
+          onlyChanged: "!(main)"
+          autoAcceptChanges: main # 👈 Auto accept main builds (why https://www.chromatic.com/docs/github-actions#github-squashrebase-merge-and-the-main-branch)
