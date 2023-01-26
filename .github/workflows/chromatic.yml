@@ -35,16 +35,16 @@ jobs:
           fetch-depth: 0 # 👈 Required to retrieve git history
       - uses: actions/setup-node@v2
         with:
-          cache: yarn
+          cache: npm
           node-version-file: .nvmrc
           registry-url: https://npm.pkg.github.com/
-      - run: yarn install --frozen-lockfile
+      - run: npm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Storybook
         run: |
-          yarn storybook:build --webpack-stats-json
+          npm storybook:build --webpack-stats-json
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1
