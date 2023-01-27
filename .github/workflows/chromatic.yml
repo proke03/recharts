@@ -47,7 +47,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ vars.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: ".storybook/public"
+          storybookBuildDir: "./storybook/public"
           onlyChanged: "!(main)"
           autoAcceptChanges: main
           
