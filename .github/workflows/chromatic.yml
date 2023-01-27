@@ -46,7 +46,7 @@ jobs:
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: $secrets.CHROMATIC_PROJECT_TOKEN
+          projectToken: $CHROMATIC_PROJECT_TOKEN
           storybookBuildDir: "./.storybook/public"
           onlyChanged: "!(main)"
           autoAcceptChanges: main
