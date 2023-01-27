@@ -36,8 +36,8 @@
     "analyse": "cross-env NODE_ENV=analyse webpack ./src/index.ts -o umd/Recharts.js",
     "tsc": "tsc",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o .storybook/public",
-    "chromatic": "dotenv -e .env.development -- npx chromatic --project-token=%CHROMATIC_PROJECT_TOKEN% -s .storybook/public"
+    "build-storybook": "build-storybook -o storybook/public",
+    "chromatic": "dotenv -e .env.development -- npx chromatic --project-token=%CHROMATIC_PROJECT_TOKEN% -s storybook/public"
   },
   "lint-staged": {
     "\"./src/**/*.{ts,tsx}\"": [
