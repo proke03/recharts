@@ -43,16 +43,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Storybook
-        run: |
-          npm run build-storybook
-
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: $projectToken
-          storybookBuildDir: "./storybook/public"
-          onlyChanged: "!(main)"
-          autoAcceptChanges: main # 👈 Auto accept main builds (why https://www.chromatic.com/docs/github-actions#github-squashrebase-merge-and-the-main-branch)
-        env: 
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: npm run build-storybook
+      - name: Deploy on Chromatic    
+        run: npm run chromatic
