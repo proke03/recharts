@@ -12,21 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  paths-filter:
-    runs-on: ubuntu-latest
-    outputs:
-      packages: ${{ steps.filter.outputs.packages }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            packages:
-              - 'storybook/**'
-
   visual-testing:
-    needs: [paths-filter]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -48,6 +34,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ vars.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: "./storybook/public"
-          onlyChanged: "!(main)"
-          autoAcceptChanges: main
           
