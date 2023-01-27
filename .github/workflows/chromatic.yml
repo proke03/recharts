@@ -29,9 +29,5 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ vars.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: "./storybook/public"
+        run: npx chromatic --project-token ${{ vars.CHROMATIC_PROJECT_TOKEN }} -s storybook/public
           
