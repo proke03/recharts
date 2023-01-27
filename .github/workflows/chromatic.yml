@@ -40,7 +40,6 @@ jobs:
           cache: 'npm'
       - run: |
           npm install
-          npm install --global dotenv-cli
           
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
