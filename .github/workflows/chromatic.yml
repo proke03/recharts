@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # 👈 Required to retrieve git history
+          fetch-depth: 0
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -30,4 +30,3 @@ jobs:
 
       - name: Publish to Chromatic
         run: npx chromatic --project-token ${{ vars.CHROMATIC_PROJECT_TOKEN }} -s storybook/public
-          
