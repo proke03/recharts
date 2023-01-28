@@ -28,5 +28,14 @@ jobs:
         run: |
           cd org
           npm install
-          npm run predeploy
-          npm run deploy
+          npm run build
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1.0.7
+        with:
+          path: org/docs
+          
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy GitHub Pages site
+        uses: actions/deploy-pages@v1.2.3
