@@ -138,5 +138,17 @@
   "engines": {
     "node": ">=12"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  }
 }
