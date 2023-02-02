@@ -75,7 +75,7 @@
     "oui-dom-events": "^0.2.2",
     "oui-dom-utils": "^0.3.8",
     "prop-types": "^15.6.2",
-    "react": "^16.0.0",
+    "react": "^16.14.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^6.1.0",
     "react-monaco-editor": "0.40.0",
@@ -95,9 +95,5 @@
   "bugs": {
     "url": "https://github.com/recharts/recharts/issues"
   },
-  "homepage": "https://github.com/recharts/recharts#readme",
-  "main": "webpack.config.dev.js",
-  "directories": {
-    "doc": "docs"
-  }
+  "homepage": "https://github.com/recharts/recharts#readme"
 }
