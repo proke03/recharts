@@ -142,5 +142,8 @@
   "engines": {
     "node": ">=12"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "workspaces": [
+    "org"
+  ]
 }
