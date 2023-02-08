@@ -16,6 +16,7 @@ import {
 } from 'recharts';
 import { curveCardinal } from 'victory-vendor/d3-shape';
 import { changeNumberOfData } from './utils';
+import { curveCardinal } from 'victory-vendor/d3-shape';
 
 const data = [
   { name: 'Page A', uv: 4000, pv: 2400, amt: 2400, time: 1 },
@@ -101,7 +102,7 @@ const renderLabel = (props: any) => {
 // custom curve cardinal `type` prop
 const stepAround = curveCardinal.tension(0.5);
 
-// eslint-disable-next-line import/no-default-export
+
 export default class AreaChartDemo extends React.Component<any, any> {
   static displayName = 'AreaChartDemo';
 
