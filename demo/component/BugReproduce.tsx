@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import { BarChart, Bar, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 
-const testData = [
-  {
-    name: 'Hello',
-    value: 20,
-  },
-  {
-    name: 'World',
-    value: 30,
-  },
-];
-
-export default class PieDemo extends React.Component {
+// eslint-disable-next-line import/no-default-export
+export default class Demo extends Component {
   static displayName = 'PieDemo';
+
+  testData = [
+    {
+      name: 'Hello',
+      value: 20,
+    },
+    {
+      name: 'World',
+      value: 30,
+    },
+  ];
 
   render() {
     return (
-      <BarChart data={testData} width={500} height={500}>
+      <BarChart data={this.testData} width={500} height={500}>
         <XAxis dataKey="name" />
         <YAxis />
         <Bar dataKey="value" />
